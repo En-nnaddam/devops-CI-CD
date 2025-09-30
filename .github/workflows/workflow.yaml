@@ -1,0 +1,24 @@
+name: devops-CI/CD
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Set up Node.js
+        uses: actions/node-@v3
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: |
+          npm install
+
+      - name: Run tests
+        run: |
+          npm test
